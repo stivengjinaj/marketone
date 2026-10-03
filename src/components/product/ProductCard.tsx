@@ -24,11 +24,11 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
             ${product.price.toFixed(2)}
           </span>
           {isOutOfStock ? (
-            <Badge variant="danger">Out of stock</Badge>
+            <Badge variant="danger">0 ne stock</Badge>
           ) : isLowStock ? (
-            <Badge variant="warning">{product.stock} left</Badge>
+            <Badge variant="warning">{product.stock} te mbetura</Badge>
           ) : (
-            <Badge variant="success">{product.stock} in stock</Badge>
+            <Badge variant="success">{product.stock} ne stock</Badge>
           )}
         </div>
       </div>
@@ -37,7 +37,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
         disabled={isOutOfStock}
         onClick={() => onAdd(product)}
       >
-        {isOutOfStock ? 'Unavailable' : 'Add to order'}
+        {isOutOfStock ? 'Nuk ka stock' : 'Shto te shporta'}
       </Button>
     </div>
   )
