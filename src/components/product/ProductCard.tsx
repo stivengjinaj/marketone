@@ -1,6 +1,7 @@
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import type { Product } from '../../types'
+import { formatCurrency } from '../../utils/formatCurrency'
 
 interface ProductCardProps {
   product: Product
@@ -21,7 +22,7 @@ export default function ProductCard({ product, onAdd }: ProductCardProps) {
         <p className="mt-1 text-xs text-slate-500">{product.supplier}</p>
         <div className="mt-3 flex items-center justify-between">
           <span className="text-lg font-semibold text-slate-900">
-            ${product.price.toFixed(2)}
+            {formatCurrency(product.price)}
           </span>
           {isOutOfStock ? (
             <Badge variant="danger">0 ne stock</Badge>

@@ -3,6 +3,7 @@ import Card from '../ui/Card'
 import EmptyState from '../ui/EmptyState'
 import type { OrderItem } from '../../types'
 import CartItemRow from './CartItemRow'
+import { formatCurrency } from '../../utils/formatCurrency'
 
 interface OrderSummaryProps {
   items: OrderItem[]
@@ -45,7 +46,7 @@ export default function OrderSummary({
       </div>
       <div className="mt-4 flex items-center justify-between border-t border-slate-200 pt-4">
         <span className="text-sm font-medium text-slate-600">Totali</span>
-        <span className="text-lg font-semibold text-slate-900">${total.toFixed(2)}</span>
+        <span className="text-lg font-semibold text-slate-900">{formatCurrency(total)}</span>
       </div>
       <Button className="mt-4 w-full" onClick={onSubmit} disabled={isSubmitting}>
         {isSubmitting ? 'Duke porositur...' : 'Porosit'}

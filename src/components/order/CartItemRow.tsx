@@ -1,4 +1,5 @@
 import type { OrderItem } from '../../types'
+import { formatCurrency } from '../../utils/formatCurrency'
 
 interface CartItemRowProps {
   item: OrderItem
@@ -11,7 +12,7 @@ export default function CartItemRow({ item, onQuantityChange, onRemove }: CartIt
     <div className="flex items-center justify-between gap-4 border-slate-100 py-3 last:border-b-0">
       <div className="min-w-0">
         <p className="truncate text-sm font-medium text-slate-900">{item.product.name}</p>
-        <p className="text-xs text-slate-500">${item.product.price.toFixed(2)} / {item.product.unit}</p>
+        <p className="text-xs text-slate-500">{formatCurrency(item.product.price)} / {item.product.unit}</p>
       </div>
       <div className="flex items-center gap-3">
         <div className="flex items-center rounded-md border border-slate-300">
@@ -34,7 +35,7 @@ export default function CartItemRow({ item, onQuantityChange, onRemove }: CartIt
           </button>
         </div>
         <span className="w-16 text-right text-sm font-medium text-slate-900">
-          ${(item.product.price * item.quantity).toFixed(2)}
+          {formatCurrency(item.product.price * item.quantity)}
         </span>
         <button
           type="button"
