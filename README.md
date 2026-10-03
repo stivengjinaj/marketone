@@ -16,18 +16,15 @@ npm run dev
 
 The app runs at `http://localhost:5173`.
 
-```bash
-npm run build     # production build
-npm run lint      # oxlint
-npm run preview   # preview the production build
-```
-
 ## Demo accounts
 
 | Role   | Email                | Password  |
 |--------|----------------------|-----------|
 | Client | client@infinitron.al | client123 |
 | Admin  | admin@infinitron.al  | admin123  |
+
+## Documentation
+[Documentation file](https://github.com/stivengjinaj/marketone/Docs.md)
 
 ## Features
 
