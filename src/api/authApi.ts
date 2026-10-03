@@ -13,7 +13,7 @@ export const login = (credentials: LoginCredentials): Promise<User> => {
       )
 
       if (!account) {
-        reject(new Error('Invalid email or password'))
+        reject(new Error('Dicka shkoi keq. Kontrolloni kredencialet.'))
         return
       }
 
