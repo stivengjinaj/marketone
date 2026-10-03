@@ -16,6 +16,16 @@ npm run dev
 
 The app runs at `http://localhost:5173`.
 
+## AI Disclaimer Usage
+
+AI (Claude Web) was used for the following tasks:
+
+- Validation of the entities structure.
+- Correctness validation of AuthContext and CartContext (given localStorage usage).
+- Fixing deprecated imports and types caused by framework updates.
+- Generation of mock data.
+- Generation of documentation for logic functions, api and hooks.
+
 ## Demo accounts
 
 | Role   | Email                | Password  |
