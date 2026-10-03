@@ -24,7 +24,7 @@ The app runs at `http://localhost:5173`.
 | Admin  | admin@infinitron.al  | admin123  |
 
 ## Documentation
-[Documentation file](https://github.com/stivengjinaj/marketone/Docs.md)
+[Documentation file](https://github.com/stivengjinaj/marketone/blob/main/Docs.md)
 
 ## Features
 
