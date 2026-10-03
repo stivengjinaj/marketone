@@ -1,29 +1,30 @@
-import {useNavigate} from "react-router";
+import { Link } from 'react-router-dom'
+import Button from '../components/ui/Button'
 
 export default function LandingPage() {
-    const navigate = useNavigate();
+  return (
+    <div className="min-h-screen bg-white">
+      <header className="mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
+        <span className="text-base font-semibold text-slate-900">MarketOne</span>
+        <Link to="/login">
+          <Button variant="secondary">Akses</Button>
+        </Link>
+      </header>
 
-    return (
-        <main className="grid min-h-screen place-items-center bg-sky-950 px-6 text-gray-100">
-            <section className="-translate-y-6 text-center">
-                <div className="grid gap-3">
-                    <h1 className="font-serif text-5xl font-semibold tracking-wide sm:text-6xl">
-                        MarketOne
-                    </h1>
-                    <p className="text-lg text-sky-100/80">
-                        Mire se vini ne MarketOne
-                    </p>
-                </div>
-                <div className="mt-10">
-                    <button
-                        type="button"
-                        onClick={() => {navigate("/login")}}
-                        className="rounded-lg bg-white px-8 py-3 font-semibold text-sky-950 shadow-lg transition-colors hover:bg-sky-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
-                    >
-                        Login
-                    </button>
-                </div>
-            </section>
-        </main>
-    )
+      <section className="mx-auto max-w-4xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-semibold tracking-tight text-slate-900 sm:text-5xl">
+          Biznesi juaj ne nje platforme te vetmje
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 sm:text-lg">
+          MarketOne eshte nje platforme qe lidh klientin me marketet duke ofruar mundesine e
+          blerjeve dhe menaxhimit te porosite.
+        </p>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <Link to="/login">
+            <Button>Akseso MarketOne</Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  )
 }
