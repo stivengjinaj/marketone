@@ -5,6 +5,7 @@ import ProductGrid from '../components/product/ProductGrid'
 import EmptyState from '../components/ui/EmptyState'
 import ErrorState from '../components/ui/ErrorState'
 import LoadingState from '../components/ui/LoadingState'
+import type { ProductAvailability, ProductSortOption } from '../components/product/ProductFilters'
 import { useCart } from '../hooks/useCart'
 import { useProducts } from '../hooks/useProducts'
 import type { ProductCategory } from '../types'
@@ -14,14 +15,30 @@ export default function DashboardPage() {
   const { addProduct } = useCart()
   const [search, setSearch] = useState('')
   const [category, setCategory] = useState<ProductCategory | 'Te gjitha'>('Te gjitha')
+  const [availability, setAvailability] = useState<ProductAvailability>('all')
+  const [sortBy, setSortBy] = useState<ProductSortOption>('default')
 
   const filteredProducts = useMemo(() => {
-    return products.filter((product) => {
+    const filtered = products.filter((product) => {
       const matchesSearch = product.name.toLowerCase().includes(search.toLowerCase())
       const matchesCategory = category === 'Te gjitha' || product.category === category
-      return matchesSearch && matchesCategory
+      const matchesAvailability =
+        availability === 'all' ||
+        (availability === 'in-stock' ? product.stock > 0 : product.stock === 0)
+      return matchesSearch && matchesCategory && matchesAvailability
     })
-  }, [products, search, category])
+
+    switch (sortBy) {
+      case 'name-asc':
+        return filtered.sort((a, b) => a.name.localeCompare(b.name, 'sq'))
+      case 'price-asc':
+        return filtered.sort((a, b) => a.price - b.price)
+      case 'price-desc':
+        return filtered.sort((a, b) => b.price - a.price)
+      default:
+        return filtered
+    }
+  }, [products, search, category, availability, sortBy])
 
   return (
     <DashboardLayout>
@@ -34,8 +51,12 @@ export default function DashboardPage() {
         <ProductFilters
           search={search}
           category={category}
+          availability={availability}
+          sortBy={sortBy}
           onSearchChange={setSearch}
           onCategoryChange={setCategory}
+          onAvailabilityChange={setAvailability}
+          onSortChange={setSortBy}
         />
       </div>
 
